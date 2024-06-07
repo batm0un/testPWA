@@ -23,7 +23,7 @@ function showInstallPromotion(){
 	var installButton=document.querySelectorAll("#installApp")[0];
 	btn.style.display='block';
 
-	installButton.addEventListener('click',function{
+	installButton.addEventListener('click',function(e){
 	  // deferredPrompt is a global variable we've been using in the sample to capture the `beforeinstallevent`
 	  deferredPrompt.prompt();
 	  // Find out whether the user confirmed the installation or not
