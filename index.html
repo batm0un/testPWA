@@ -21,7 +21,7 @@ window.onbeforeinstallprompt = function(e) {
 };
 
 function showInstallPromotion(){
-	if(window.localStorage.getItem("choice") !=null){ return;}
+	if(window.localStorage.getItem("AppInstallChoice") !=null){ return;}
 	
 	var installButton=document.querySelectorAll("#installApp")[0];
 	installButton.style.display='block';
@@ -31,6 +31,7 @@ function showInstallPromotion(){
 	  deferredPrompt.prompt();
 	  deferredPrompt.userChoice.then(function(resp){
 		  var outcome=resp.outcome;
+		  window.localStorage.setItem("AppInstallChoice",outcome);
 		  deferredPrompt = null;
 		  // Act on the user's choice
 		  if (outcome === 'accepted') {
@@ -53,7 +54,7 @@ function hideInstallPromotion(){
 
 </head>
 <body> 
-	<h1>TEST 1.0</h1>
+	<h1>TEST 1.00</h1>
 	<input id=installApp value="install !" type=button style="display:none" />
 </body>
 </html>
