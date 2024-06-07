@@ -19,13 +19,30 @@ window.onbeforeinstallprompt = function(e) {
   console.log(`'beforeinstallprompt' event was fired.`);
 };
 
-	function showInstallPromotion(){
-		document.querySelectorAll("#installApp")[0].style.display='block';
-	}
-	function hideInstallPromotion(){
-		document.querySelectorAll("#installApp")[0].style.display='none';
-	}
+function showInstallPromotion(){
+	var installButton=document.querySelectorAll("#installApp")[0];
+	btn.style.display='block';
 
+	installButton.addEventListener('click',function{
+	  // deferredPrompt is a global variable we've been using in the sample to capture the `beforeinstallevent`
+	  deferredPrompt.prompt();
+	  // Find out whether the user confirmed the installation or not
+	  const { outcome } = await deferredPrompt.userChoice;
+	  // The deferredPrompt can only be used once.
+	  deferredPrompt = null;
+	  // Act on the user's choice
+	  if (outcome === 'accepted') {
+	    console.log('User accepted the install prompt.');
+	  } else if (outcome === 'dismissed') {
+	    console.log('User dismissed the install prompt');
+	  }
+	};
+}
+function hideInstallPromotion(){
+	document.querySelectorAll("#installApp")[0].style.display='none';
+}
+
+	
 </script>
 
 </head>
