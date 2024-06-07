@@ -29,7 +29,8 @@ function showInstallPromotion(){
 	installButton.addEventListener('click',function(e){
 	  // deferredPrompt is a global variable we've been using in the sample to capture the `beforeinstallevent`
 	  deferredPrompt.prompt();
-	  deferredPrompt.userChoice.then(function(outcome){
+	  deferredPrompt.userChoice.then(function(resp){
+		  var outcome=resp.outcome;
 		  deferredPrompt = null;
 		  // Act on the user's choice
 		  if (outcome === 'accepted') {
@@ -52,7 +53,7 @@ function hideInstallPromotion(){
 
 </head>
 <body> 
-	<h1>TEST 1</h1>
+	<h1>TEST 1.0</h1>
 	<input id=installApp value="install !" type=button style="display:none" />
 </body>
 </html>
