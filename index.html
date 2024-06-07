@@ -17,7 +17,7 @@ window.onbeforeinstallprompt = function(e) {
   showInstallPromotion();
   // Optionally, send analytics event that PWA install promo was shown.
   console.log(`'beforeinstallprompt' event was fired.`);
-});
+};
 
 	function showInstallPromotion(){
 		document.querySelectorAll("#installApp")[0].style.display='block';
@@ -30,7 +30,7 @@ window.onbeforeinstallprompt = function(e) {
 
 </head>
 <body> 
-	<h1>23</h1>
+	<h1>24</h1>
 	<input id=installApp value="install !" type=button style="display:none" />
 </body>
 </html>
