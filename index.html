@@ -4,8 +4,33 @@
 	<meta charset="utf-8">
 	<title>test2</title>
 	<link rel="manifest" href="/testPWA/test.webmanifest.aspx">
+<script>
+// Initialize deferredPrompt for use later to show browser install prompt.
+var deferredPrompt;
+
+window.onbeforeinstallprompt = function(e) {
+  // Prevent the mini-infobar from appearing on mobile
+  e.preventDefault();
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+  // Update UI notify the user they can install the PWA
+  showInstallPromotion();
+  // Optionally, send analytics event that PWA install promo was shown.
+  console.log(`'beforeinstallprompt' event was fired.`);
+});
+
+	function showInstallPromotion(){
+		document.querySelectorAll("#installApp")[0].style.display='block';
+	}
+	function hideInstallPromotion(){
+		document.querySelectorAll("#installApp")[0].style.display='none';
+	}
+
+</script>
+
 </head>
 <body> 
-	<h1>22</h1>
+	<h1>23</h1>
+	<input id=installApp type=button style="display:none" />
 </body>
 </html>
