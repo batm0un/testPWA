@@ -9,17 +9,20 @@
 var deferredPrompt;
 
 window.onbeforeinstallprompt = function(e) {
-  // Prevent the mini-infobar from appearing on mobile
-  e.preventDefault();
-  // Stash the event so it can be triggered later.
-  deferredPrompt = e;
-  // Update UI notify the user they can install the PWA
-  showInstallPromotion();
-  // Optionally, send analytics event that PWA install promo was shown.
-  console.log(`'beforeinstallprompt' event was fired.`);
+	// Prevent the mini-infobar from appearing on mobile
+	e.preventDefault();
+	// Stash the event so it can be triggered later.
+	deferredPrompt = e;
+	// Update UI notify the user they can install the PWA
+	showInstallPromotion();
+	// Optionally, send analytics event that PWA install promo was shown.
+	console.log(`'beforeinstallprompt' event was fired.`);
+
 };
 
 function showInstallPromotion(){
+	if(window.localStorage.getItem("choice") !=null){ return;}
+	
 	var installButton=document.querySelectorAll("#installApp")[0];
 	installButton.style.display='block';
 
@@ -49,7 +52,7 @@ function hideInstallPromotion(){
 
 </head>
 <body> 
-	<h1>TEST 26</h1>
+	<h1>TEST 1</h1>
 	<input id=installApp value="install !" type=button style="display:none" />
 </body>
 </html>
